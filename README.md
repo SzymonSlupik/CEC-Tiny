@@ -18,3 +18,8 @@ The highlight of this CEC implementation is the CEC line (pin 13 on a HDMI port)
 To help with debugging and tweaking the ATTINY25 code, I have also preapred a separate project: the CEC-Tiny-Pro. It is targeting a "Pro" (ATMEGA328) arduino board and provides all bells and whistles of CEC, incluiding full serial monitoring / debugging. It can be used in a fully passive mode (just listening to the CEC line, not sending anything), so that you can daisy-chain the ATTINY25 implementation with the ATMEGA implementation and use the ATMEGA as a passive HDMI-CEC scanner to monitor the behavior of the ATTINY25 (which does not have serial output).
 
 Below are photos of the complete setup. The HDMI-to-RF box has a USB port, which can be used to provide power to the Chromecast, reducing the number of power bricks and cables. You may also notice I like using the SMD variants of the ATTINY and that is because I can use a simple clip, combimned with a [Tiny AVR Programmer](https://www.sparkfun.com/products/11801) to program the chip in-circuit from the Arduino IDE.
+
+![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/HDMI-to-RF%20with%20Chromecast.JPG?raw=true "HDMI-to-RF with Chromecast")
+![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC%20Power%20-%20Idea.jpg?raw=true "CEC-based Power Control over coaxial RF cable")
+![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC-Tiny%20inside.JPG?raw=true "CEC-Tiny inside")
+![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC-Tiny%20in-circuit%20programming.JPG?raw=true "In-circuit programming using a clip")
