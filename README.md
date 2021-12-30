@@ -5,12 +5,14 @@ I've got myself into HDMI-CEC attempting to control the power state (on/off) of 
 
 I went through a dozen or so HDMI-CEC projects and all of them were quite complex (e.g., requiring a separation of CEC-IN and CEC-OUT as separate signals) and despite several efforts I could not get any of them up an running. Then I came across the [CEC Volume Control project by Thomas Sowell](https://blog.ldtlb.com/2020/10/14/pioneer-sx950-hdmi-cec-volume.html) from which I derived the idea for my implemetation.
 
-Actually my code is a farily straightforward fork of [Thomas'es code](https://github.com/tsowell/avr-hdmi-cec-volume), with minor modifications:
+The code is a farily straightforward fork of [Thomas'es code](https://github.com/tsowell/avr-hdmi-cec-volume), with minor modifications:
 * Changed to make it compatible with the Arduino IDE (this brings much greater flexibility in terms of hardware)
 * Changed timer "ticks" to the system "micros()" function to make the code independent (to some extent) from the exact oscillator frequency. This change also makes it it easier to port to the low-end ATTINY processors, which do not have a 16-bit timer).
 * Removed all serial console debugging code.
 * Removed the timer interrupt handler for simplicity.
 * Added a hack to force the Chromecast to send power and volume commands on the CEC bus (to do that you need to pretend you are a TV - in CEC terms). This also works with Apple TV.
+
+The INO file does not have any dependencies nor requires any libraries. This has been tested with both external, crystal-based clock as well as with an internal oscillator. Remember to select a proper option in the IDE and "Tools -> Burn Bootloader", which will set the AVR fuses accordingly.
 
 Thomas argues for using a crustal oscillator, as the CEC protocol is very time-sensitive. This is true, but I found it working quite well on an AVR (ATTINY) processor with an internal oscillator, after tweaking the OSCCAL variable (you need to do this for every unit). This also means that for the first device you make the crystal is really needed, to save you from debugging frustration. Please note the crystal must match the Arduino IDE settings for your board / processor. 16MHz is recommended. Once you have one board working, you may consider iterating by removing the crystal, switching to the internal oscillator and tweaking the OSCCAL variable.
 
@@ -21,6 +23,7 @@ To help with debugging and tweaking the ATTINY25 code, I have also preapred a se
 Other than the ATTINY25 processor, there is a power status LED with a resistor. It red-glows the box gently to help troubleshooting the state / connectivity. The DC-to-RF coupling uses small inductors and 100nF capacitors to block the RF path from interference. It assumes the RF path has serial insulating capacitors already installed. Finally I opted for a serial Constant Current Regulator (CCR) - the NSI45015WT1G. It limits the current (in case of shorting) to 15mA. This can be replaced by a ~200R resistor.
 
 Below are photos of the complete setup. The HDMI-to-RF box has a USB port, which can be used to provide power to the Chromecast, reducing the number of power bricks and cables. You may also notice I like using the SMD variants of the ATTINY and that is because I can use a simple clip, combimned with a [Tiny AVR Programmer](https://www.sparkfun.com/products/11801) to program the chip in-circuit from the Arduino IDE.
+
 
 ![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/HDMI-to-RF%20with%20Chromecast.JPG?raw=true "HDMI-to-RF with Chromecast")
 ![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC%20Power%20-%20Idea.jpg?raw=true "CEC-based Power Control over coaxial RF cable")
