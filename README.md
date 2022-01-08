@@ -30,7 +30,7 @@ Below are photos of the complete setup. The HDMI-to-RF box has a USB port, which
 ![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC-Tiny%20in-circuit%20programming.JPG?raw=true "In-circuit programming using a clip")
 ![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/Brionvega%20Algol.jpg?raw=true "Algol Brionvega controlled by Chromecast over HDMI-CEC")
 
-Another proof-of-concept variation of this project is a simple CEC demonstrator. It uses only the ATTINY25 processor and 3 LEDs with no other external components. Even the LED resistors are not necessary, as the internal pull-ups are used instead. This demonstrates yet another interesting technique possible - declare a pin as input and switch it between high-Z and pull-up mode, it is sufficient to energize an LED. This demostrator uses the CEC_Tiny_Volume.INO which has added code for handling volume up/down messages.
+Another proof-of-concept variation of this project is a simple CEC demonstrator. It uses only the ATTINY25 processor and 3 LEDs with no other external components. Even the LED resistors are not necessary, as the internal pull-ups are used instead. This demonstrates yet another interesting technique possible - declare a pin as input and switch it between high-Z and pull-up mode, it is sufficient to energize an LED. This demostrator uses the [CEC_Tiny_Volume.INO](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC_Tiny_Volume.ino) which has added code for handling volume up/down messages.
 
 ![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC-Tiny.JPG?raw=true "CEC-Tiny Demonstrator")
 
