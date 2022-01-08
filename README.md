@@ -34,4 +34,4 @@ Another proof-of-concept variation of this project is a simple CEC demonstrator.
 
 ![alt text](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC-Tiny.JPG?raw=true "CEC-Tiny Demonstrator")
 
-And here is a [video shiwing CEC-Timny in action](https://youtu.be/67GFAnMYsE0).
+And here is a [video shiwing CEC-Tiny in action](https://youtu.be/67GFAnMYsE0).
