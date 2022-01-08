@@ -12,7 +12,7 @@ The code is a farily straightforward fork of [Thomas'es code](https://github.com
 * Removed the timer interrupt handler for simplicity.
 * Added a hack to force the Chromecast to send power and volume commands on the CEC bus (to do that you need to pretend you are a TV - in CEC terms). This also works with Apple TV.
 
-The INO file does not have any dependencies nor requires any libraries. This has been tested with both external, crystal-based clock as well as with an internal oscillator. Remember to select a proper option in the IDE and "Tools -> Burn Bootloader", which will set the AVR fuses accordingly.
+The [CEC_Tiny_Switch.INO](https://github.com/SzymonSlupik/CEC-Tiny/blob/main/CEC_Tiny_Switch.ino) file does not have any dependencies nor requires any libraries. This has been tested with both external, crystal-based clock as well as with an internal oscillator. Remember to select a proper option in the IDE and "Tools -> Burn Bootloader", which will set the AVR fuses accordingly.
 
 Thomas argues for using a crystal oscillator, as the CEC protocol is very time-sensitive. This is true, but I found it working quite well on an AVR (ATTINY) processor with an internal oscillator, after tweaking the OSCCAL variable (you need to do this for every unit). This also means that for the first device you make the crystal is really needed, to save you from debugging frustration. Please note the crystal must match the Arduino IDE settings for your board / processor. 16MHz is recommended. Once you have one board working, you may consider iterating by removing the crystal, switching to the internal oscillator and tweaking the OSCCAL variable.
 
